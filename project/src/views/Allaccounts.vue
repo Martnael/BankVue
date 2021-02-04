@@ -11,12 +11,11 @@
         <th>Account owner name</th>
         <th>Balance</th>
       </tr>
-      <tr v-for="row in customers">
+      <tr v-for="row in accounts">
         <td>{{row.id}}</td>
-        <td>{{row.customerName}}</td>
-        <td>{{row.userName}}</td>
-        <td>{{row.socialNumber}}</td>
-        <td>{{row.password}}</td>
+        <td>{{row.accountNumber}}</td>
+        <td>{{row.owner}}</td>
+        <td>{{row.accountBalance}}</td>
       </tr>
     </table>
   </div>
@@ -25,17 +24,17 @@
 <script>
 
 let getData = function () {
-  this.$http.get('http://localhost:8080/solutions/bank/allcustomers')
-      .then(response => this.customers = response.data)
+  this.$http.get('http://localhost:8080/solutions/bank/allaccounts')
+      .then(response => this.accounts = response.data)
 }
 
 export default {
-  name: 'Customeroverview',
+  name: 'Allaccounts',
   components: {},
 
   data: function () {
     return {
-      customers: []
+      accounts: []
     }
   },
 
